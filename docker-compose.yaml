@@ -5,6 +5,8 @@ networks:
 services:
   mongo:
     image: "${MONGO_IMAGE}"
+    ports:
+      - "37017:27017"
     container_name: mongo
     command: >
       bash -c '
@@ -50,6 +52,8 @@ services:
   redis:
     image: "${REDIS_IMAGE}"
     container_name: redis
+    ports:
+      - "16379:6379"
     volumes:
       - "${DATA_DIR}/components/redis/data:/data"
       - "${DATA_DIR}/components/redis/config/redis.conf:/usr/local/redis/config/redis.conf"
@@ -58,7 +62,7 @@ services:
     restart: always
     sysctls:
       net.core.somaxconn: 1024
-    command: [ "redis-server", "/usr/local/redis/config/redis.conf", "--requirepass", "${REDIS_PASSWORD}", "--appendonly", "yes" ]
+    command: [ "redis-server", "/usr/local/redis/config/redis.conf", "--requirepass", "openIM123", "--appendonly", "yes" ]
     networks:
       - openim
 
@@ -87,6 +91,8 @@ services:
     container_name: kafka
     user: root
     restart: always
+    ports:
+      - "19094:9094"
     volumes:
       - "${DATA_DIR}/components/kafka:/bitnami/kafka"
     environment:
