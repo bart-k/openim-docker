@@ -282,3 +282,18 @@ services:
       - openim-server
     networks:
       - openim
+
+  livekit:
+    image: livekit/livekit-server
+    container_name: livekit
+    command: >
+      --config /livekit.yaml
+      --bind 0.0.0.0
+      --node-ip=your-server-ip
+    ports:
+      - "7880:7880"       # HTTP API 端口
+      - "7881:7881"       # RTC TCP 端口
+      - "7882:7882/udp"   # 示例的 RTC UDP 端口
+    volumes:
+      - ./livekit.yaml:/livekit.yaml
+    restart: unless-stopped
