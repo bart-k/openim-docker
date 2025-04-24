@@ -39,7 +39,7 @@ services:
       - "${DATA_DIR}/components/mongodb/data/conf:/etc/mongo"
     environment:
       - TZ=Asia/Shanghai
-      - wiredTigerCacheSizeGB=0.5 //内存配置
+      - wiredTigerCacheSizeGB=1
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=openIM123
       - MONGO_INITDB_DATABASE=openim_v3
