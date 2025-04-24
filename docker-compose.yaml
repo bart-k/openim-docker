@@ -39,12 +39,13 @@ services:
       - "${DATA_DIR}/components/mongodb/data/conf:/etc/mongo"
     environment:
       - TZ=Asia/Shanghai
-      - wiredTigerCacheSizeGB=1
+      - wiredTigerCacheSizeGB=0.5 //内存配置
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=openIM123
       - MONGO_INITDB_DATABASE=openim_v3
       - MONGO_OPENIM_USERNAME=${MONGO_USERNAME}
       - MONGO_OPENIM_PASSWORD=${MONGO_PASSWORD}
+      
     restart: always
     networks:
       - openim
@@ -106,6 +107,7 @@ services:
       KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
       KAFKA_NUM_PARTITIONS: 8
       KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_HEAP_OPTS: "-Xms256m -Xmx256m"  #限制内存
     networks:
       - openim
 
