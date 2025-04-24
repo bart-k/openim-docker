@@ -269,6 +269,7 @@ services:
       - CHATENV_SHARE_OPENIM_APIURL=${API_URL}
       - CHATENV_LOG_ISSTDOUT=${LOG_IS_STDOUT}
       - CHATENV_LOG_REMAINLOGLEVEL=${LOG_LEVEL}
+      - CHATENV_CHAT_RPC_CHAT_LIVEKIT_URL=${LIVE_KIT_URL}
     ports:
       - "${CHAT_API_PORT}:10008"
       - "${ADMIN_API_PORT}:10009"
@@ -289,7 +290,7 @@ services:
     command: >
       --config /livekit.yaml
       --bind 0.0.0.0
-      --node-ip=your-server-ip
+      --node-ip=${LIVE_KIT_NODE_IPL}
     ports:
       - "7880:7880"       # HTTP API 端口
       - "7881:7881"       # RTC TCP 端口
