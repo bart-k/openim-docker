@@ -290,7 +290,7 @@ services:
     command: >
       --config /livekit.yaml
       --bind 0.0.0.0
-      --node-ip=${LIVE_KIT_NODE_IPL}
+      --node-ip=${LIVE_KIT_NODE_IP}
     ports:
       - "7880:7880"       # HTTP API 端口
       - "7881:7881"       # RTC TCP 端口
