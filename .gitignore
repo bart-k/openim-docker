@@ -397,3 +397,5 @@ Sessionx.vim
 .idea
 dist/
 config/config.yaml
+
+.env
